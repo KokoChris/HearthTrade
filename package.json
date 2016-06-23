@@ -1,0 +1,30 @@
+{
+  "name": "hearthtrade",
+  "version": "1.0.0",
+  "description": "trade some hearthstone cards",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KokoChris/HearthTrade.git"
+  },
+  "author": "kokoc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KokoChris/HearthTrade/issues"
+  },
+  "homepage": "https://github.com/KokoChris/HearthTrade#readme",
+  "dependencies": {
+    "ejs": "^2.4.2",
+    "express": "^4.14.0",
+    "passport": "^0.3.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "supertest": "^1.2.0"
+  }
+}

@@ -1,0 +1,15 @@
+
+body {
+	background: url(../images/landing.jpg);
+}
+
+.jumbotron {
+	background-color: rgba(255,255,255,0.0);
+	color: rgb(165,129,41);
+	margin-top:600px;
+}
+.auth {
+	padding-top: 30px;
+
+	
+}
