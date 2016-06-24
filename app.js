@@ -14,6 +14,7 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
 
 
 
@@ -33,6 +34,7 @@ app.use(function (req,res,next) {
 	res.locals.currentUser = req.user;
 	next();
 });
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
@@ -42,7 +44,8 @@ mongoose.connect(config.dbURI);
 
 app.set('view engine' , 'ejs');
 
-app.use(authRoutes)
+app.use(authRoutes);
+app.use("/users", userRoutes)
 
 app.get('/' , (req, res ) => {
     
