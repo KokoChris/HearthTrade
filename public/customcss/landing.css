@@ -1,6 +1,10 @@
 
 body {
 	background: url(../images/landing.jpg);
+	background-repeat:no-repeat;
+
+	background-position:center;
+
 }
 
 .jumbotron {
