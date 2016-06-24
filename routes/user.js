@@ -4,37 +4,22 @@ const User =  require('../models/user');
 
 
 
+
 router.get('/' , (req,res) => {
-	User.find({}, (err,users) =>  {
-		if(err){
-			console.log(err);
-		} else {
-			res.send(users);
-		}
-	})
+
+		User.find({})
+			.then(users => { res.send(users)})
+			.catch(err => {console.log(err)})
 });
 
-router.get('/:userID', (req,res)=> {
-	//
+router.get('/:userID', (req,res) => {
+	
 	let userId = req.params.userID;
 
-	User.findById(userId, (err, user)=> {
-		if (err) {
-			console.log(err)
-		} else {
-			res.send(user)
-		}
-	})
+	User.findById(userId)
+		.then(user => {res.send(user)})
+		.catch(err => {console.log(err)})
 })
-
-
-
-
-
-
-
-
-
 
 
 
