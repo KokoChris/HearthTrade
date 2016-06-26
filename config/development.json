@@ -1,6 +1,7 @@
 {
 	"host":"http://localhost:3000",
 	"dbURI":"mongodb://localhost/hearthtrade",
-	"sessionSecret": "monkeyKing"
+	"sessionSecret": "monkeyKing",
+	"hearthstoneApiKey": "t7WHf6GH2Ymsh3QKUPiuws9QNYjip1dBQxtjsnwZH2EitXZRas"
 	
 }
