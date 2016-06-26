@@ -1,4 +1,5 @@
 .caption p {
 	height:70px;
 	overflow: hidden;
+	/*temprorary workaround for mess with heights*/
 }

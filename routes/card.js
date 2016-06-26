@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const rp = require('request-promise');
 const config = require('../config');
+const User = require('../models/user');
 
 
 const apiKey = config.hearthstoneApiKey;
@@ -33,6 +34,25 @@ router.get('/', (req, res) => {
         .catch(error => console.log(error));
 
 });
+
+
+router.post('/add' , (req, res) => {
+
+	console.log(req.body)
+	let userId = req.user._id;
+
+	User.findById(userId)
+		.then(user => {
+			user.cards.push(req.body)
+			user.save();
+		})
+		.catch(err => {
+			console.log(err);
+		})
+
+})
+
+
 
 
 module.exports = router;

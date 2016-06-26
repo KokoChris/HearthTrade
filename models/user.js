@@ -8,7 +8,13 @@ var UserSchema = new mongoose.Schema({
     password:String,
     city:String,
     fullname:String,
-    state:String
+    state:String,
+    cards: [{
+    	name: String,
+    	img: String,
+    	flavor: String,
+
+    }]
 
 });
 
