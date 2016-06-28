@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+<link rel="stylesheet" type="text/css" href="/customcss/cardsIndex.css">    
+
+<% include ../partials/nav %>
+
+
+
+<div class ="container">
+   <div id="message">
+      
+   </div>
+   <div class = "row">
+    <% cards.forEach((card)=> { %>
+            <div class = "col-sm-6 col-md-3" >
+                <div class = "thumbnail" >
+                    <img src="<%- card.img %>" alt="Someone stole the photo!!!">
+                </div>
+            
+               <div class = "caption">
+                  <h3><%- card.name %></h3>
+                  <p><%- card.flavor %></p>
+                  
+                  <p>
+                     <a href = "#" class = "btn btn-danger" role = "button">
+                        Delete
+                     </a> 
+                  </p>
+                  
+               </div>
+            </div>
+
+      <% }) %>
+     
+   
+   
+   </div>
+
+</div>
+
+
+
+
+
+
+
+
+<% include ../partials/footer %>

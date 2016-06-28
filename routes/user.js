@@ -24,7 +24,10 @@ router.get('/:userID/collection', (req, res) => {
     User.findById(userId)
         .select('-_id')
         .select('cards')
-        .then(cards => { res.send(cards) })
+        .then(cards => {
+           
+            res.render('cards/collection', { cards: cards.cards })
+        })
         .catch(err => { console.log(err) })
 })
 
@@ -66,7 +69,7 @@ router.delete("/:userID/", (req, res) => {
 
 
 
-//need to secure routes
+
 
 
 
