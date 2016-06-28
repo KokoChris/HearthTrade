@@ -36,6 +36,12 @@ router.get('/', (req, res) => {
         });
 
 });
+router.get('/all', (req, res) => {
+    User.find({})
+        .select('cards')
+        .then(data => res.send(data))
+})
+
 
 
 router.post('/add', isLoggedIn, (req, res) => {

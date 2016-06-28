@@ -11,6 +11,12 @@ router.get('/', (req, res) => {
         .catch(err => { console.log(err) })
 });
 
+router.get('/all', (req, res) => {
+    User.find({})
+        .select('cards')
+        .then(data => res.send(data))
+})
+
 router.get('/:userID', (req, res) => {
 
     let userId = req.params.userID;
@@ -22,11 +28,10 @@ router.get('/:userID', (req, res) => {
 router.get('/:userID/collection', (req, res) => {
     let userId = req.params.userID;
     User.findById(userId)
-        .select('-_id')
         .select('cards')
         .then(cards => {
            
-            res.render('cards/collection', { cards: cards.cards })
+            res.render('cards/collection', { profile: cards })
         })
         .catch(err => { console.log(err) })
 })
