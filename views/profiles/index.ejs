@@ -21,19 +21,21 @@
 				   			  	<a href="users/<%=profile._id %>" class="btn btn-sm btn-success">Profile</a>
 				   			  	<a href="users/<%=profile._id %>/collection" class="btn btn-sm btn-warning">Card Collection</a>
 				   			  	<hr>
-				   			  	<div class="row">
-					   			  	<div class="col-md-1">
-					   			  		<a href="users/<%=profile._id %>/edit" class="btn btn-sm btn-warning">Edit</a>
-					   			  		
-					   			  	</div>
-					   			  	<div class="col-md-1">
-				   					    <form id="delete-form" action="/users/<%= profile._id %>?_method=DELETE" method="POST">
-        					 				 <input  type="submit" class="btn btn-sm btn-danger" value="Delete">
-							 			</form>	  	
-					   			  	</div>
-					   			 </div>
+				   			  	<% if (currentUser && String(currentUser._id) === String(profile._id)) { %>
 
-			                
+					   			  	<div class="row">
+						   			  	<div class="col-md-1">
+						   			  		<a href="users/<%=profile._id %>/edit" class="btn btn-sm btn-warning">Edit</a>
+						   			  		
+						   			  	</div>
+						   			  	<div class="col-md-1">
+					   					    <form id="delete-form" action="/users/<%= profile._id %>?_method=DELETE" method="POST">
+	        					 				 <input  type="submit" class="btn btn-sm btn-danger" value="Delete">
+								 			</form>	  	
+						   			  	</div>
+						   			 </div>
+								<% } %>
+										                
 					    	</div>
 					    	
 					 	

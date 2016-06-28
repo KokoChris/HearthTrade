@@ -6,17 +6,16 @@ const User = require('../models/user');
 
 
 router.get('/', (req, res) => {
-    //need to render a list of users somewhere, not sure yet
     User.find({})
         .then(users => { res.render('profiles/index', { profiles: users }) })
         .catch(err => { console.log(err) })
 });
 
 router.get('/:userID', (req, res) => {
-    //show the profile page 
+
     let userId = req.params.userID;
 
-    User.findById(userId,{ '_id': 0, 'cards': 0, '__v': 0 })
+    User.findById(userId, { '_id': 0, 'cards': 0, '__v': 0 })
         .then(user => { res.send(user) })
         .catch(err => { console.log(err) })
 })
@@ -35,7 +34,7 @@ router.get('/:userID/edit', (req, res) => {
 
     User.findById(userId)
         .then(user => {
-            console.log(user);
+
             res.render('profiles/edit', { profile: user })
         })
         .catch(err => {

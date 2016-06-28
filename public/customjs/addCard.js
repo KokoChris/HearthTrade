@@ -16,7 +16,26 @@ $(document).ready(function() {
         card.flavor = cardFlavor;
         card.img = photoUrl;
 
-        $.post("/cards/add", card);
+        $.post("/cards/add", card)
+            .done( function (data ) {
+                console.log(data.message);
+                
+                var successDiv = `<div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        ${data.message}
+                </div>`  
+
+                $("#message").append(successDiv);
+
+            })
+            .fail(function(){
+                var failDiv = `<div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        Please login to add a card!
+                </div>`  
+                $("#message").append(failDiv);
+
+            } );
 
 
     })
