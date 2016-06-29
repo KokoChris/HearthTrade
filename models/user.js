@@ -15,6 +15,14 @@ var UserSchema = new mongoose.Schema({
     	flavor: String,
 
     }]
+    outgoingTrades:[{
+        card: String,
+        otherUser: String
+    }]
+    incomingTrades:[{
+        card: String,
+        otherUser: String
+    }]
 
 });
 
