@@ -16,6 +16,7 @@ const User = require('./models/user');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const cardRoutes = require('./routes/card');
+const tradeRoutes = require('./routes/trades');
 
 
 
@@ -46,8 +47,9 @@ mongoose.connect(config.dbURI);
 app.set('view engine' , 'ejs');
 
 app.use(authRoutes);
-app.use("/users", userRoutes)
+app.use("/users", userRoutes);
 app.use("/cards", cardRoutes);
+app.use("/trades", tradeRoutes);
 
 app.get('/' , (req, res ) => {
     
