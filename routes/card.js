@@ -4,7 +4,6 @@ const rp = require('request-promise');
 const config = require('../config');
 const User = require('../models/user');
 
-
 const apiKey = config.hearthstoneApiKey;
 const apiBaseUrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/'
 
@@ -36,13 +35,25 @@ router.get('/', (req, res) => {
         });
 
 });
+
 router.get('/all', (req, res) => {
+
     User.find({})
         .select('cards')
-        .then(data => res.send(data))
+        .then(users => {
+
+            let cards = users.map( (user) => {
+
+                return user.cards
+            })
+        
+        let mergedCards = [].concat.apply([],cards)
+        res.render('cards/allUsers' , { cards:mergedCards})
+        })
+        .catch(err => {console.log(err)})
+    
+
 })
-
-
 
 router.post('/add', isLoggedIn, (req, res) => {
 
@@ -62,13 +73,15 @@ router.post('/add', isLoggedIn, (req, res) => {
 })
 
 
+
+
 function isLoggedIn(req, res, next) {
 
     if (req.user) {
         next();
     } else {
 
-        res.status(301).send({ message: 'You need to be logged in to add a card!' })
+        res.status(301).send({ message: 'You need to be logged in to perform this action' })
     }
 }
 

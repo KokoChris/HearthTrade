@@ -17,11 +17,14 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-left">
 							<li><a href="/users">All Users</a></li>
+							<li><a href="/cards/all">All Cards from our Users</a></li>
+
 							<% if(currentUser) { %>
 								<li><a href="/users/<%- currentUser._id %>/collection">My Collection</a></li>
 
 							<% } %>
 						</ul>
+							
 						
 					
 				        <form class="navbar-form pull-right" role="search" action='/cards'>

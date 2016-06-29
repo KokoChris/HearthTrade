@@ -22,7 +22,7 @@ router.get('/:userID', (req, res) => {
     let userId = req.params.userID;
 
     User.findById(userId, { '_id': 0, 'cards': 0, '__v': 0 })
-        .then(user => { res.send(user) })
+        .then(user => { res.render('profiles/show', {profile:user}) })
         .catch(err => { console.log(err) })
 })
 router.get('/:userID/collection', (req, res) => {
