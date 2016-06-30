@@ -63,7 +63,7 @@ router.get('/new', (req,res) => {
    				
    				return card._id == requestedCardId
    			})
-   			res.render('/trades/new',{buyerCards,sellerCard})
+   			res.render('trades/new',{buyerCards,sellerCard})
    		})
 })	
 
