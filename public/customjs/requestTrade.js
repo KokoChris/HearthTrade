@@ -5,6 +5,8 @@ $(document).ready(function() {
 
 
         $.post('/trades', {id: tradeeId})
-            .done(console.log('way to go'));
+            .done(function(data) {
+            	console.log(data.message)
+            });
     });
 });

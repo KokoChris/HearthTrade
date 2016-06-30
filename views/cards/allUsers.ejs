@@ -19,20 +19,7 @@
                <div class = "caption">
                   <h3><%- card.name %></h3>
                   <p><%- card.flavor %></p>
-                    <% if (currentUser && String(currentUser._id) !== String(profile._id)) { %>
-                  <p>
-                     <a href = "#" class = "btn btn-success" role = "button">
-                        Request trade
-                     </a> 
-                  </p>
-                   <% } %>
-                   <% if(currentUser && String(currentUser._id) === String(profile._id)) { %>
-                    <p>
-                     <a href = "#" class = "btn btn-danger" role = "button">
-                        Remove Card
-                     </a> 
-                  </p>
-                  <% } %>
+                
 
                   
                </div>
