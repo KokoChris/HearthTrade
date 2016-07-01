@@ -1,0 +1,55 @@
+<% include ../partials/header %>
+<link rel="stylesheet" type="text/css" href="/customcss/cardsIndex.css">    
+
+<% include ../partials/nav %>
+
+   <div class = "container">
+
+
+   	 	<% incomingTrades.forEach(function(trade){ %>
+	   	 	<div class ="row" > 
+
+			   	   	<div class="col-sm-6 col-md-3 col-md-offset-2 scard">
+			           <h3 class="text-center"> You Get</h3>
+			           <div class = "thumbnail"  value= "" >
+			                    <img src="<%-trade.cards[1].img  %>" alt="Someone stole the photo!!!">
+			           </div>
+			        </div>
+			        <div class="col-sm-1 col-md-2">
+			            <p class='btn btn-success btn-lg doTrade accept'    value="<%- trade._id %>">Accept </p>
+			            <p class='btn btn-danger btn-lg rejectTrade reject' value="<%- trade._id %>">Reject </p>
+
+			        </div>
+			        
+			        <div class="col-sm-6 col-md-3 bcard">
+			           <h3 class="text-center" id="offer"> You give </h3>
+			           <div class = "thumbnail"  value= "" >
+			                    <img src="<%- trade.cards[0].img %>" alt="Someone stole the photo!!!">
+			           </div>
+
+			        </div>
+	   	   </div>
+
+
+   	 	<% }) %>
+   	 
+
+
+
+
+
+
+
+
+
+
+   </div>
+
+
+
+
+
+
+
+
+<% include ../partials/footer %>

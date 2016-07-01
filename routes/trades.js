@@ -13,8 +13,7 @@ router.get('/incoming' , (req,res) => {
    User.findById(userId)
         .select('incomingTrades')
         .then(user => {
-
-          res.send( user.incomingTrades)
+          res.render('trades/incoming' , { 'incomingTrades': user.incomingTrades})
         })
 
 })
@@ -25,8 +24,25 @@ router.get('/outgoing' , (req,res) => {
         .select('outgoingTrades')
         .then(user => {
           
-          res.send( user.outgoingTrades)
+          res.send( user.outgoingTrades )
         })
+})
+
+router.post('/incoming' , (req,res) => {
+ 
+    let tradeId =  req.body.tradeId;
+    User.find().elemMatch('incomingTrades',{_id: tradeId})
+      .then( user => {
+        let trades = user[0].incomingTrades
+        let trade =  trades.filter(trade => {
+           return trade._id == tradeId;
+         })[0];
+
+        console.log(trade)
+
+
+      })
+
 })
 
 
@@ -44,27 +60,27 @@ router.post('/', (req, res) => {
   Promise.all([findBuyer,findSeller])
     .then(results => {
 
-      let buyer  = results[0][0];
-      let seller = results[1][0];
-      let sellerCard  = seller.cards.filter( card => {
-         return card._id == sellerCardId
-      })[0];
-      let buyerCard = buyer.cards.filter( card => {
-        return card._id ==buyerCardId;
-      })[0];
+        let buyer  = results[0][0];
+        let seller = results[1][0];
+        let sellerCard  = seller.cards.filter( card => {
+           return card._id == sellerCardId
+        })[0];
+        let buyerCard = buyer.cards.filter( card => {
+          return card._id ==buyerCardId;
+        })[0];
 
 
-      buyer.outgoingTrades.push({
-        cards: [sellerCard,buyerCard],
-        otherUser: seller._id
-      })
-      seller.incomingTrades.push({
-        cards:[sellerCard,buyerCard],
-        otherUser: buyer._id
-      })
-      buyer.save();
-      seller.save();
-      res.send({ redirect: '/users'})
+        buyer.outgoingTrades.push({
+          cards: [sellerCard,buyerCard],
+          otherUser: seller._id
+        })
+        seller.incomingTrades.push({
+          cards:[sellerCard,buyerCard],
+          otherUser: buyer._id
+        })
+        buyer.save();
+        seller.save();
+        res.send({ redirect: '/users'})
 
     })
 
