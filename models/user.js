@@ -16,11 +16,11 @@ var UserSchema = new mongoose.Schema({
 
     }],
     outgoingTrades:[{
-        card: String,
+        cards: [],
         otherUser: String
     }],
     incomingTrades:[{
-        card: String,
+        cards: [],
         otherUser: String
     }]
 
