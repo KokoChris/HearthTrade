@@ -3,3 +3,9 @@
 	overflow: scroll;
 	/*temprorary workaround for mess with heights*/
 }
+
+
+.doTrade {
+	margin-top:180px;
+	margin-left:21%;
+}

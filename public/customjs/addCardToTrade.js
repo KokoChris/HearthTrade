@@ -1,7 +1,8 @@
  $(document).ready(function() {
 
  	 $('.container').on('click','.cardsFromCollection', function(){
- 	 	console.log($(this).innerHTML())
+ 	 	 var imgToTrade = $(this).children().prop('outerHTML');
+ 	 	 $("#offer").after(imgToTrade)
  	 });
 
 
