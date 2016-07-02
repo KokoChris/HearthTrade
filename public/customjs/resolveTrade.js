@@ -10,11 +10,11 @@ $(document).ready(function() {
 
         $.post('/trades/incoming', {tradeId:tradeId})
             .done(function(data) {
-            	console.log(data)
-            	// window.location = data.redirect;
+                 window.location = data.redirect;
+                
          	})
          	.fail(function(){
-
+                console.log('something went wrong with resolving the trade')
          	})
      });
  });

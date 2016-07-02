@@ -97,10 +97,10 @@ router.post('/incoming', (req, res) => {
             let outgoingTradeIndex = buyer.outgoingTrades.indexOf(outgoingTrade);
             buyer.outgoingTrades.splice(outgoingTradeIndex,1);
 
-              buyer.save();
-              seller.save();
+             buyer.save();
+             seller.save();
 
-
+            res.send({redirect: `/users/${seller._id}/collection`});
 
 
         })

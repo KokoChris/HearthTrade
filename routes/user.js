@@ -29,6 +29,7 @@ router.get('/:userID/collection', (req, res) => {
     let userId = req.params.userID;
     User.findById(userId)
         .select('cards')
+        .select('username')
         .then(cards => {
            
             res.render('cards/collection', { profile: cards })
