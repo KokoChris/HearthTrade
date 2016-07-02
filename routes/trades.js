@@ -19,7 +19,7 @@ router.get('/outgoing', (req, res) => {
         .select('outgoingTrades')
         .then(user => {
 
-            res.send(user.outgoingTrades)
+            res.render('trades/outgoing', { 'outgoingTrades': user.outgoingTrades })
         })
 })
 
