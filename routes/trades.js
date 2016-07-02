@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
@@ -85,17 +86,17 @@ router.post('/incoming', (req, res) => {
 
             //now the cards and the incoming trade is gone and we only have to erase the outgoing trade of the buyer
             let outgoingTrade = buyer.outgoingTrades.filter(trade => {
-            	
-                return JSON.stringify(trade.otherUser) == JSON.stringify(seller._id) && JSON.stringify(trade.cards[0]) == JSON.stringify(sellerCard)  &&  JSON.stringify(trade.cards[1]) == JSON.stringify(buyerCard);
+
+                return JSON.stringify(trade.otherUser) == JSON.stringify(seller._id) && JSON.stringify(trade.cards[0]) == JSON.stringify(sellerCard) && JSON.stringify(trade.cards[1]) == JSON.stringify(buyerCard);
 
             })[0];
             let outgoingTradeIndex = buyer.outgoingTrades.indexOf(outgoingTrade);
-            buyer.outgoingTrades.splice(outgoingTradeIndex,1);
+            buyer.outgoingTrades.splice(outgoingTradeIndex, 1);
 
-             buyer.save();
-             seller.save();
+            buyer.save();
+            seller.save();
 
-            res.send({redirect: `/users/${seller._id}/collection`});
+            res.send({ redirect: `/users/${seller._id}/collection` });
 
 
         })
