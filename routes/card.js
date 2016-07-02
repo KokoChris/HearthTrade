@@ -29,9 +29,9 @@ router.get('/', (req, res) => {
             res.render('cards/index', { cards: parsedCards });
         })
         .catch(error => {
-        	if (error.statusCode === 404){
-        		res.render('cards/index')
-        	}
+            if (error.statusCode === 404) {
+                res.redirect('users')//add flash message
+            }
         });
 
 });
@@ -42,16 +42,17 @@ router.get('/all', (req, res) => {
         .select('cards')
         .then(users => {
 
-            let cards = users.map( (user) => {
+            let cards = users.map((user) => {
 
                 return user.cards
             })
-        
-        let mergedCards = [].concat.apply([],cards)
-        res.render('cards/allUsers' , { cards:mergedCards})
+
+            let mergedCards = [].concat.apply([], cards);
+            console.log(mergedCards)
+            res.render('cards/allUsers', { cards: mergedCards });
         })
-        .catch(err => {console.log(err)})
-    
+        .catch(err => { console.log(err) })
+
 
 })
 

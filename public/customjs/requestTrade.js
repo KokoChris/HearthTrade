@@ -9,11 +9,11 @@
 
         $.post('/trades', {cards})
             .done(function(data) {
-            	console.log(data)
+           
             	window.location = data.redirect;
          	})
          	.fail(function(){
-
+                console.log('something went wrong')
          	})
      });
  });
