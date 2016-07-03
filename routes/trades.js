@@ -139,6 +139,7 @@ router.post('/', (req, res) => {
             })
             buyer.save();
             seller.save();
+            req.flash('success','Trade request sent!Wait for the other user to accept!')
             res.send({ redirect: '/users' });
 
         })
